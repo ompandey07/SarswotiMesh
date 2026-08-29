@@ -1,0 +1,239 @@
+@import "tailwindcss";
+
+@import "@fontsource/manrope/400.css";
+@import "@fontsource/manrope/500.css";
+@import "@fontsource/manrope/600.css";
+@import "@fontsource/manrope/700.css";
+@import "@fontsource/manrope/800.css";
+@import "@fontsource/inter/400.css";
+@import "@fontsource/inter/500.css";
+@import "@fontsource/inter/600.css";
+@import "@fontsource/noto-sans-devanagari/400.css";
+@import "@fontsource/noto-sans-devanagari/500.css";
+@import "@fontsource/noto-sans-devanagari/600.css";
+@import "@fontsource/noto-sans-devanagari/700.css";
+@import "@fontsource/noto-sans-devanagari/800.css";
+
+/* Strict 0px Border Radius across ALL elements - No curves anywhere! */
+*, *::before, *::after {
+  border-radius: 0 !important;
+}
+
+:root {
+  --font-display: "Manrope", "Noto Sans Devanagari", sans-serif;
+  --font-body: "Inter", "Noto Sans Devanagari", sans-serif;
+
+  /* Default Light Mode Colors (White & Crisp Slate with Amber Bronze Highlights) */
+  --color-bg: #ffffff;
+  --color-bg-alt: #f8fafc;
+  --color-surface: #ffffff;
+  --color-surface-2: #f1f5f9;
+  --color-line: #e2e8f0;
+  --color-line-strong: #cbd5e1;
+  --color-steel: #334155;
+  --color-steel-dim: #64748b;
+  --color-ink: #0f172a;
+  --color-ink-dim: #475569;
+  --color-accent: #c97a3d;
+  --color-accent-2: #b45309;
+  --color-accent-dim: rgba(201, 122, 61, 0.12);
+  --color-accent-line: rgba(201, 122, 61, 0.4);
+
+  --container-app: 1320px;
+  --ease-brand: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+:root[data-theme="dark"],
+.dark {
+  /* Dark Mode Colors (Industrial Obsidian & Copper Fire Highlights) */
+  --color-bg: #090b0d;
+  --color-bg-alt: #111417;
+  --color-surface: #15181c;
+  --color-surface-2: #1e2227;
+  --color-line: #27272a;
+  --color-line-strong: #3f3f46;
+  --color-steel: #cbd5e1;
+  --color-steel-dim: #71717a;
+  --color-ink: #f8fafc;
+  --color-ink-dim: #a1a1aa;
+  --color-accent: #c97a3d;
+  --color-accent-2: #e2a45e;
+  --color-accent-dim: rgba(201, 122, 61, 0.18);
+  --color-accent-line: rgba(226, 164, 94, 0.45);
+}
+
+@theme {
+  --font-display: "Manrope", "Noto Sans Devanagari", sans-serif;
+  --font-body: "Inter", "Noto Sans Devanagari", sans-serif;
+
+  --color-bg: var(--color-bg);
+  --color-bg-alt: var(--color-bg-alt);
+  --color-surface: var(--color-surface);
+  --color-surface-2: var(--color-surface-2);
+  --color-line: var(--color-line);
+  --color-line-strong: var(--color-line-strong);
+  --color-steel: var(--color-steel);
+  --color-steel-dim: var(--color-steel-dim);
+  --color-ink: var(--color-ink);
+  --color-ink-dim: var(--color-ink-dim);
+  --color-accent: var(--color-accent);
+  --color-accent-2: var(--color-accent-2);
+  --color-accent-dim: var(--color-accent-dim);
+  --color-accent-line: var(--color-accent-line);
+
+  --container-app: 1320px;
+  --ease-brand: cubic-bezier(0.22, 0.61, 0.36, 1);
+}
+
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  html[data-lang="ne"] body,
+  html[data-lang="ne"] h1,
+  html[data-lang="ne"] h2,
+  html[data-lang="ne"] h3,
+  html[data-lang="ne"] .font-display-lang {
+    font-family: "Noto Sans Devanagari", var(--font-display);
+  }
+
+  html[data-lang="en"] h1,
+  html[data-lang="en"] h2,
+  html[data-lang="en"] h3,
+  html[data-lang="en"] .font-display-lang {
+    font-family: var(--font-display);
+  }
+
+  img {
+    max-width: 100%;
+    display: block;
+  }
+
+  a {
+    color: inherit;
+  }
+
+  ::selection {
+    background: var(--color-accent-2);
+    color: #ffffff;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-accent-2);
+    outline-offset: 2px;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--color-accent-2) var(--color-bg-alt);
+  }
+  ::-webkit-scrollbar {
+    width: 7px;
+    height: 7px;
+  }
+  ::-webkit-scrollbar-track {
+    background: var(--color-bg-alt);
+  }
+  ::-webkit-scrollbar-thumb {
+    background: var(--color-accent-2);
+    border-radius: 0 !important;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: var(--color-accent);
+  }
+}
+
+@layer utilities {
+  /* language visibility */
+  html[data-lang="ne"] .lang-en {
+    display: none !important;
+  }
+  html[data-lang="en"] .lang-ne {
+    display: none !important;
+  }
+
+  .container-app {
+    max-width: var(--container-app);
+    margin-inline: auto;
+    padding-inline: 1.25rem;
+  }
+
+  @media (min-width: 768px) {
+    .container-app {
+      padding-inline: 2rem;
+    }
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  /* Wire-mesh signature motif background */
+  .mesh-bg {
+    position: absolute;
+    inset: 0;
+    background-image: linear-gradient(
+        30deg,
+        transparent 47%,
+        var(--color-line-strong) 49%,
+        var(--color-line-strong) 51%,
+        transparent 53%
+      ),
+      linear-gradient(
+        -30deg,
+        transparent 47%,
+        var(--color-line-strong) 49%,
+        var(--color-line-strong) 51%,
+        transparent 53%
+      );
+    background-size: 34px 60px;
+    opacity: 0.18;
+    pointer-events: none;
+  }
+
+  .grain {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    mix-blend-mode: overlay;
+    opacity: 0.04;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+
+  .text-gradient-accent {
+    background: linear-gradient(90deg, var(--color-accent-2), var(--color-accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+}
+
+/* Ticker marquee animation */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.animate-marquee {
+  animation: marquee-scroll 24s linear infinite;
+}
