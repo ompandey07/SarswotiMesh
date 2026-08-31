@@ -6,10 +6,10 @@ import ProductCard from "./ProductCard";
 import { products } from "@/data/content";
 
 const categories = [
-  { id: "all", ne: "सबै उत्पादनहरू", en: "All Products" },
+  { id: "all", ne: "सबै उत्पादनहरू (१४)", en: "All Products (14)" },
   { id: "fencing", ne: "घेराबार तथा सुरक्षा", en: "Fencing & Security" },
-  { id: "poultry", ne: "पोल्ट्री तथा कृषि", en: "Agro & Poultry" },
-  { id: "gabion", ne: "सिभिल गेबियन", en: "Civil Gabion" },
+  { id: "agro", ne: "कृषि तथा पोल्ट्री", en: "Agro & Poultry" },
+  { id: "industrial", ne: "औद्योगिक तथा सिभिल मेश", en: "Industrial & Sheet Mesh" },
 ];
 
 export default function Products() {
@@ -17,10 +17,7 @@ export default function Products() {
 
   const filteredProducts = useMemo(() => {
     if (activeTab === "all") return products;
-    if (activeTab === "fencing") return products.filter((p) => p.num === "01" || p.num === "04");
-    if (activeTab === "poultry") return products.filter((p) => p.num === "02");
-    if (activeTab === "gabion") return products.filter((p) => p.num === "03");
-    return products;
+    return products.filter((p) => p.category === activeTab);
   }, [activeTab]);
 
   return (
@@ -34,10 +31,16 @@ export default function Products() {
             <h2 className="mt-3 text-3xl sm:text-4xl font-black text-balance uppercase tracking-tight max-w-xl">
               <Bi ne="प्रयोग अनुसार निर्मित जाली" en="MESH BUILT AROUND ITS PURPOSE" />
             </h2>
+            <p className="mt-2 text-xs font-medium text-steel">
+              <Bi
+                ne="प्रत्येक उत्पादनको नाम र स्वरूप अनुसार भरतपुर कारखानाबाट निर्मित विविध ग्याल्भनाइज्ड जाली।"
+                en="Complete range of direct factory manufactured wire mesh products from our workshop."
+              />
+            </p>
           </div>
 
           {/* Interactive Category Filter Bar */}
-          <div className="flex flex-wrap items-center gap-2 border border-line bg-surface p-1.5">
+          <div className="flex flex-wrap items-center gap-2 border border-line bg-surface p-1.5 shadow-sm">
             {categories.map((cat) => (
               <button
                 key={cat.id}
@@ -56,7 +59,7 @@ export default function Products() {
         </Reveal>
 
         {/* Product Cards Grid with AnimatePresence */}
-        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <motion.div layout className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
           <AnimatePresence mode="popLayout">
             {filteredProducts.map((p) => (
               <motion.div
@@ -76,3 +79,4 @@ export default function Products() {
     </section>
   );
 }
+

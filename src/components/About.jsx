@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Trophy } from "lucide-react";
 import Reveal, { Stagger, StaggerItem } from "./Reveal";
 import Bi from "./Bi";
 import { images, stats } from "@/data/content";
@@ -9,7 +10,7 @@ export default function About() {
 
   useEffect(() => {
     if (statValRef.current) {
-      animateCounter(statValRef.current, 0, 10, "+", 1800);
+      animateCounter(statValRef.current, 0, 28, "+", 1800);
     }
   }, []);
 
@@ -28,6 +29,17 @@ export default function About() {
           <div className="absolute inset-0 bg-gradient-to-t from-bg/80 via-transparent to-transparent" />
           <span className="absolute top-0 left-0 h-6 w-6 border-t-2 border-l-2 border-accent-2" />
           <span className="absolute bottom-0 right-0 h-6 w-6 border-b-2 border-r-2 border-accent-2" />
+          
+          {/* Highlight Banner on Image */}
+          <div className="absolute bottom-4 left-4 right-4 border border-amber-500/60 bg-surface/90 backdrop-blur-md p-3.5 shadow-lg">
+            <div className="flex items-center gap-2 text-xs font-black text-amber-700 dark:text-amber-300 uppercase tracking-wide">
+              <Trophy size={14} className="text-amber-600 dark:text-amber-400 shrink-0" />
+              <Bi ne="चितवन, नेपालको पहिलो मेश जाली उद्योग" en="1st Wire Mesh Manufacturer in Chitwan, Nepal" />
+            </div>
+            <p className="text-[11px] text-steel font-medium mt-1">
+              <Bi ne="२५-२८ वर्षको लगातार निर्माण अनुभव र भरपर्दो सेवा।" en="Building trust across Nepal with 25-28 years of dedicated craftsmanship." />
+            </p>
+          </div>
         </Reveal>
 
         <Reveal>
@@ -35,13 +47,13 @@ export default function About() {
             <Bi ne="हाम्रोबारे" en="About the Workshop" />
           </div>
           <h2 className="mt-3 text-3xl sm:text-4xl font-black leading-tight text-balance uppercase tracking-tight">
-            <span className="block lang-ne">यहीँ निर्माण। वास्तविक प्रयोगका लागि तयार।</span>
-            <span className="block lang-en">MADE HERE. BUILT FOR REAL WORLD USE.</span>
+            <span className="block lang-ne">चितवनको पहिलो जाली उद्योग। २५–२८ वर्षको निर्माण अनुभव।</span>
+            <span className="block lang-en">FIRST IN CHITWAN, NEPAL. 25–28 YEARS LEGACY.</span>
           </h2>
           <p className="mt-5 text-steel leading-relaxed font-medium">
             <Bi
-              ne="Saraswoti Mesh Jali Manufacturing Workshop भरतपुरमा अवस्थित एक स्थानीय निर्माण एकाइ हो, जसले सुरक्षा, कृषि, निर्माण र पूर्वाधार क्षेत्रका लागि भरपर्दो वायर मेश समाधान उत्पादन गर्दछ। हामी प्रत्येक प्रयोगको आवश्यकता अनुसार जाली डिजाइन र निर्माण गर्न ध्यान दिन्छौं।"
-              en="Saraswoti Mesh Jali Manufacturing Workshop is a local manufacturing unit based in Bharatpur, focused on producing reliable wire mesh solutions for security, agriculture, construction and infrastructure applications. Every mesh is shaped around the real-world need it will serve."
+              ne="Saraswoti Mesh Jali Manufacturing Workshop भरतपुरमा अवस्थित चितवन, नेपालको पहिलो मेश जाली निर्माण उद्योग हो। २५-२८ वर्षभन्दा बढीको अनुभवका साथ हामीले सुरक्षा, कृषि, निर्माण र पूर्वाधार क्षेत्रका लागि उच्च गुणस्तरीय ग्याल्भनाइज्ड जाली उत्पादन गर्दै आएका छौं।"
+              en="Saraswoti Mesh Jali Manufacturing Workshop is the pioneer and first wire mesh manufacturing factory established in Chitwan, Nepal. Backed by over 25-28 years of experience, we specialize in high-tensile galvanized wire mesh, anti-climb fencing, razor wire, and custom industrial solutions."
             />
           </p>
 
@@ -50,7 +62,7 @@ export default function About() {
               <StaggerItem key={i} className="border border-line bg-surface p-5 transition-colors hover:border-accent-2">
                 <b className="block text-2xl sm:text-3xl font-black text-accent-2 font-mono">
                   {i === 0 ? (
-                    <span ref={statValRef}>10+</span>
+                    <span>25-28+</span>
                   ) : (
                     s.value ?? <Bi ne={s.valueNe} en={s.valueEn} />
                   )}
@@ -66,3 +78,4 @@ export default function About() {
     </section>
   );
 }
+

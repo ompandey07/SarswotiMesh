@@ -40,10 +40,15 @@ export default function ProductCard({ product }) {
           className="h-full w-full object-cover transition-transform duration-700 ease-out group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-bg via-transparent to-transparent opacity-80" />
-        <span className="absolute top-3 left-3 text-2xl font-black text-ink-dim/30 select-none font-mono">#{product.num}</span>
+        <span className="absolute top-3 left-3 text-xl font-black text-white/60 drop-shadow-md select-none font-mono bg-bg/60 backdrop-blur-xs px-2 py-0.5 border border-line">
+          #{product.num}
+        </span>
         
-        {/* Wireframe Corner Accents */}
-        <div className="absolute top-2 right-2 text-accent-2/60 text-xs font-mono select-none">+</div>
+        {product.highlightEn && (
+          <span className="absolute top-3 right-3 border border-accent-2/60 bg-accent-2/90 backdrop-blur-xs px-2.5 py-1 text-[10px] font-black uppercase text-[#0a0c0e] tracking-wider font-mono shadow-sm">
+            <Bi ne={product.highlightNe} en={product.highlightEn} />
+          </span>
+        )}
       </div>
 
       <div className="p-6">

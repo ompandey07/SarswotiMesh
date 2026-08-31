@@ -1,60 +1,15 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowRight, MapPin, Grid3x3, ShieldCheck, Mountain, Zap, Volume2, VolumeX, CheckCircle2, Factory, Layers } from "lucide-react";
+import { motion } from "framer-motion";
+import { ArrowRight, MapPin, Grid3x3, ShieldCheck, Zap, Volume2, VolumeX, CheckCircle2, Factory, Sparkles, Cpu } from "lucide-react";
 import Bi from "./Bi";
-import { heroTechItems, images, products } from "@/data/content";
+import { images } from "@/data/content";
 import heroVideo from "@/assets/video/hero-section.mp4";
 import { animate, utils } from "animejs";
-
-const iconMap = {
-  mesh: Grid3x3,
-  security: ShieldCheck,
-  gabion: Mountain,
-};
-
-const heroShowcases = [
-  {
-    id: "mesh-01",
-    image: images.meshJali.webp,
-    titleNe: "ग्याल्भनाइज्ड चेनलिङ्क मेश जाली",
-    titleEn: "Galvanized Chain-Link Mesh Jali",
-    descNe: "घर, खेतबारी र उद्योग सुरक्षाको लागि भारी क्षमताको जाली।",
-    descEn: "Heavy-duty perimeter fencing for homes, farms & industrial security.",
-    tag: "8–14 SWG Wire",
-  },
-  {
-    id: "gabion-02",
-    image: images.gabionJali.webp,
-    titleNe: "सिभिल गेबियन रिटेनिङ जाली",
-    titleEn: "Civil Gabion Retaining Jali",
-    descNe: "माटो थेग्ने पर्खाल, नदी किनार र पहिरो रोकथामका लागि।",
-    descEn: "Stone-filled wire cages for retaining walls & riverbank erosion control.",
-    tag: "Heavy Zinc Galvanized",
-  },
-  {
-    id: "poultry-03",
-    image: images.poultryJali.webp,
-    titleNe: "सुक्ष्म ग्याल्भनाइज्ड पोल्ट्री जाली",
-    titleEn: "Fine Galvanized Poultry Jali",
-    descNe: "पोल्ट्री फार्म र पशु खोर निर्माणका लागि सुक्ष्म मेश।",
-    descEn: "High-density fine mesh for poultry farms & livestock enclosures.",
-    tag: "Fine Opening Mesh",
-  },
-  {
-    id: "workshop-04",
-    image: images.manufacturingWorkshop.webp,
-    titleNe: "भरतपुर प्रत्यक्ष म्यानुफ्याक्चरिङ वर्कशप",
-    titleEn: "Bharatpur Direct Manufacturing Facility",
-    descNe: "न्युरोड भरतपुरमा अत्याधुनिक मेसिनरीद्वारा प्रत्यक्ष उत्पादन।",
-    descEn: "Direct workshop production with heavy machinery in Bharatpur Nayaroad.",
-    tag: "Direct Factory",
-  },
-];
 
 export default function Hero() {
   const videoRef = useRef(null);
   const heroRef = useRef(null);
   const [isMuted, setIsMuted] = useState(true);
-  const [activeShowcase, setActiveShowcase] = useState(heroShowcases[0]);
 
   useEffect(() => {
     if (videoRef.current) {
@@ -110,22 +65,24 @@ export default function Hero() {
         {/* Top Notification Bar */}
         <div className="hero-animate-el flex flex-wrap items-center justify-between gap-4 mb-8">
           <div className="flex flex-wrap items-center gap-3 text-xs font-bold uppercase tracking-wider">
-            <div className="flex items-center gap-2 border border-accent-2/60 bg-accent-dim px-3.5 py-1.5 text-accent-2 shadow-sm">
+            {/* FIRST IN CHITWAN HIGHLIGHT BADGE */}
+            <div className="flex items-center gap-2 border border-amber-500/60 bg-amber-500/10 dark:bg-amber-500/20 px-3.5 py-1.5 text-amber-800 dark:text-amber-300 shadow-xs font-black">
               <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping bg-accent-2 opacity-75" />
-                <span className="relative inline-flex h-2 w-2 bg-accent-2" />
+                <span className="absolute inline-flex h-full w-full animate-ping bg-amber-500 opacity-75" />
+                <span className="relative inline-flex h-2 w-2 bg-amber-500" />
               </span>
-              <Bi ne="प्रत्यक्ष कारखाना उत्पादन" en="Direct Workshop Manufacturing" />
+              <Bi ne="चितवन, नेपालको पहिलो मेश जाली उद्योग" en="1st Wire Mesh Factory in Chitwan, Nepal" />
             </div>
 
-            <div className="hidden sm:flex items-center gap-1.5 text-steel border border-line bg-surface/90 px-3 py-1.5">
+            <div className="hidden sm:flex items-center gap-1.5 text-accent-2 border border-accent-2/40 bg-surface px-3 py-1.5 font-mono font-bold">
+              <span>२५-२८ वर्षको अनुभव</span>
+              <span className="text-steel-dim">|</span>
+              <span>25–28 Years Experience</span>
+            </div>
+
+            <div className="hidden lg:flex items-center gap-1.5 text-steel border border-line bg-surface px-3 py-1.5">
               <MapPin size={14} className="text-accent-2" />
-              <Bi ne="भरतपुर, नेपाल — न्युरोड" en="Bharatpur, Nepal — Nayaroad" />
-            </div>
-
-            <div className="hidden md:flex items-center gap-1.5 text-steel-dim border border-line bg-surface/90 px-3 py-1.5">
-              <Zap size={13} className="text-accent-2" />
-              <Bi ne="१००% ग्याल्भनाइज्ड वायर मेश" en="100% Galvanized Steel Mesh" />
+              <Bi ne="भरतपुर, न्युरोड • ०५६-५९५३४५" en="Bharatpur Nayaroad • 056-595345" />
             </div>
           </div>
 
@@ -145,37 +102,30 @@ export default function Hero() {
         <div className="grid lg:grid-cols-[1.1fr_0.9fr] gap-12 items-center">
           {/* Left Column: Headlines, Lead & Action Buttons */}
           <div>
-            <div className="hero-animate-el inline-block border-l-2 border-accent-2 pl-3.5 py-0.5 mb-4 text-xs font-black uppercase tracking-widest text-accent-2">
-              <Bi ne="नेपालको अग्रणी ग्याल्भनाइज्ड जाली उद्योग" en="NEPAL'S INDUSTRIAL WIRE MESH MANUFACTURER" />
+            <div className="hero-animate-el inline-flex items-center gap-2 border-l-2 border-accent-2 pl-3.5 py-0.5 mb-4 text-xs font-black uppercase tracking-widest text-accent-2">
+              <Bi ne="चितवन नेपालको पहिलो ग्याल्भनाइज्ड जाली उद्योग — २५–२८ वर्षको अनुभव" en="FIRST IN CHITWAN, NEPAL • 25–28 YEARS OF MANUFACTURING LEGACY" />
             </div>
 
             <h1 className="hero-animate-el text-balance text-3xl sm:text-5xl lg:text-[4rem] lg:leading-[1.03] font-black tracking-tight uppercase text-ink">
-              <span className="block lang-ne">बलियो जाली।</span>
-              <span className="block lang-ne text-gradient-accent">दीर्घकालसम्मको भरपर्दो निर्माण।</span>
-              <span className="block lang-en">PRECISE WIRE MESH.</span>
-              <span className="block lang-en text-gradient-accent">BUILT FOR GENERATIONS.</span>
+              <span className="block lang-ne">चितवनको पहिलो जाली उद्योग।</span>
+              <span className="block lang-ne text-gradient-accent">२५-२८ वर्षको भरपर्दो निर्माण।</span>
+              <span className="block lang-en">FIRST IN CHITWAN, NEPAL.</span>
+              <span className="block lang-en text-gradient-accent">25–28 YEARS OF EXCELLENCE.</span>
             </h1>
-
-            <p className="hero-animate-el mt-5 max-w-xl text-base sm:text-lg text-steel font-medium leading-relaxed">
-              <Bi
-                ne="सुरक्षा, निर्माण, कृषि तथा पूर्वाधारका लागि अत्याधुनिक मेसिनरीबाट निर्मित ग्याल्भनाइज्ड जाली समाधान। भरतपुर, नेपालमा प्रत्यक्ष निर्माण।"
-                en="Heavy-duty galvanized wire mesh engineered with maximum tensile strength for security fencing, agriculture, and civil infrastructure. Direct workshop production in Bharatpur, Nepal."
-              />
-            </p>
 
             {/* Feature Highlight Badges */}
             <div className="hero-animate-el mt-6 flex flex-wrap gap-2 text-xs font-bold uppercase tracking-wider text-steel">
-              <span className="border border-line bg-surface px-3 py-1 flex items-center gap-1.5">
-                <CheckCircle2 size={13} className="text-accent-2" />
-                Heavy Zinc Coating
+              <span className="border border-amber-500/60 bg-amber-500/10 dark:bg-amber-500/20 text-amber-800 dark:text-amber-300 px-3 py-1 flex items-center gap-1.5 font-black">
+                <CheckCircle2 size={13} className="text-amber-600 dark:text-amber-400" />
+                First in Chitwan, Nepal
               </span>
               <span className="border border-line bg-surface px-3 py-1 flex items-center gap-1.5">
                 <CheckCircle2 size={13} className="text-accent-2" />
-                Custom SWG Gauges
+                25-28 Years Legacy
               </span>
               <span className="border border-line bg-surface px-3 py-1 flex items-center gap-1.5">
                 <CheckCircle2 size={13} className="text-accent-2" />
-                Retaining & Gabion
+                14+ Product Lineups
               </span>
             </div>
 
@@ -185,7 +135,7 @@ export default function Hero() {
                 href="#products"
                 className="group inline-flex items-center gap-3 h-14 px-8 border border-accent-2 bg-accent-2 text-[#0a0c0e] font-black uppercase tracking-wider hover:bg-accent hover:text-white transition-colors shadow-md"
               >
-                <Bi ne="उत्पादनहरू हेर्नुहोस्" en="Explore Products" />
+                <Bi ne="१४+ उत्पादनहरू हेर्नुहोस्" en="Explore All 14 Products" />
                 <ArrowRight size={18} className="transition-transform group-hover:translate-x-1" />
               </a>
 
@@ -193,95 +143,126 @@ export default function Hero() {
                 href="#contact"
                 className="inline-flex items-center gap-2.5 h-14 px-8 border border-line bg-surface text-ink font-extrabold uppercase tracking-wider hover:border-accent-2 hover:text-accent-2 transition-colors shadow-sm"
               >
-                <Bi ne="कोटेसन माग्नुहोस्" en="Request Quote" />
+                <Bi ne="कोटेसन / अर्डर गर्नुहोस्" en="Request Factory Quote" />
               </a>
-            </div>
-
-            {/* 4 Live Metric Stats Grid in Hero */}
-            <div className="hero-animate-el mt-10 grid grid-cols-2 sm:grid-cols-4 gap-3 pt-6 border-t border-line">
-              <div className="border border-line bg-surface p-3 text-center">
-                <div className="text-xl font-black font-mono text-accent-2">10+ YRS</div>
-                <div className="text-[10px] font-bold uppercase text-steel-dim mt-0.5">Manufacturing</div>
-              </div>
-              <div className="border border-line bg-surface p-3 text-center">
-                <div className="text-xl font-black font-mono text-accent-2">100%</div>
-                <div className="text-[10px] font-bold uppercase text-steel-dim mt-0.5">Galvanized</div>
-              </div>
-              <div className="border border-line bg-surface p-3 text-center">
-                <div className="text-xl font-black font-mono text-accent-2">500+</div>
-                <div className="text-[10px] font-bold uppercase text-steel-dim mt-0.5">Projects</div>
-              </div>
-              <div className="border border-line bg-surface p-3 text-center">
-                <div className="text-xl font-black font-mono text-accent-2">DIRECT</div>
-                <div className="text-[10px] font-bold uppercase text-steel-dim mt-0.5">Workshop</div>
-              </div>
             </div>
           </div>
 
-          {/* Right Column: Visual Product & Workshop Showcase Gallery Card */}
-          <div className="hero-animate-el border border-line bg-surface p-6 shadow-2xl flex flex-col gap-5">
-            <div className="flex items-center justify-between border-b border-line pb-3">
-              <div className="flex items-center gap-2 text-xs font-black uppercase text-accent-2 tracking-wider">
-                <Layers size={16} />
-                <span>EXECUTIVE PRODUCT SHOWCASE</span>
-              </div>
-              <span className="text-[10px] font-mono font-bold text-steel-dim border border-line px-2 py-0.5">
-                BHARATPUR, NEPAL
-              </span>
-            </div>
+          {/* Right Column: Full-Feel Immersive Animated Wire Mesh SVG Artwork (Unboxed) */}
+          <div className="hero-animate-el relative w-full h-[400px] sm:h-[480px] lg:h-[540px] flex items-center justify-center select-none">
+            {/* Ambient Glowing Background Atmosphere */}
+            <div className="absolute inset-0 bg-gradient-to-tr from-accent-2/30 via-amber-500/20 to-transparent blur-3xl rounded-full opacity-80 animate-pulse pointer-events-none" />
 
-            {/* Large Active Product Image Frame */}
-            <div className="aspect-[16/10] w-full border border-line overflow-hidden relative bg-surface-2">
-              <img
-                src={activeShowcase.image}
-                alt={activeShowcase.titleEn}
-                className="h-full w-full object-cover transition-all duration-500 hover:scale-105"
+            {/* DIRECT SVG ARTWORK - FULL FEEL UNBOXED */}
+            <svg
+              className="w-full h-full drop-shadow-[0_15px_35px_rgba(201,122,61,0.25)] relative z-10"
+              viewBox="0 0 500 500"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <defs>
+                {/* Metallic Gold & Bronze Gradients */}
+                <linearGradient id="heroWireGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="var(--color-accent-2)" stopOpacity="1" />
+                  <stop offset="50%" stopColor="#f59e0b" stopOpacity="0.9" />
+                  <stop offset="100%" stopColor="var(--color-accent-2)" stopOpacity="0.6" />
+                </linearGradient>
+
+                {/* Full Wire Mesh Pattern */}
+                <pattern id="fullHeroMeshPattern" width="50" height="70" patternUnits="userSpaceOnUse">
+                  <path
+                    d="M 0 35 L 25 0 L 50 35 L 25 70 Z"
+                    fill="none"
+                    stroke="var(--color-accent-2)"
+                    strokeWidth="1.8"
+                    strokeOpacity="0.75"
+                  />
+                  <circle cx="25" cy="35" r="2.5" fill="var(--color-accent-2)" />
+                </pattern>
+              </defs>
+
+              {/* Background Full Grid Pattern */}
+              <rect width="500" height="500" fill="url(#fullHeroMeshPattern)" opacity="0.35" />
+
+              {/* Concentric Rotating Radar Rings */}
+              <motion.g
+                animate={{ rotate: 360 }}
+                transition={{ repeat: Infinity, duration: 30, ease: "linear" }}
+                style={{ transformOrigin: "250px 250px" }}
+              >
+                <circle cx="250" cy="250" r="210" fill="none" stroke="var(--color-accent-2)" strokeWidth="1.5" strokeDasharray="12 8" strokeOpacity="0.4" />
+                <circle cx="250" cy="250" r="180" fill="none" stroke="var(--color-accent-2)" strokeWidth="2" strokeDasharray="20 10" strokeOpacity="0.6" />
+              </motion.g>
+
+              <motion.g
+                animate={{ rotate: -360 }}
+                transition={{ repeat: Infinity, duration: 22, ease: "linear" }}
+                style={{ transformOrigin: "250px 250px" }}
+              >
+                <circle cx="250" cy="250" r="145" fill="none" stroke="var(--color-accent-2)" strokeWidth="2.5" strokeDasharray="16 12" strokeOpacity="0.7" />
+              </motion.g>
+
+              {/* Central Interlocked 3D Diamond Wire Structure */}
+              <g stroke="url(#heroWireGrad)" fill="none">
+                {/* Primary Wire Diamond Layers */}
+                <path d="M 250 80 L 400 230 L 250 380 L 100 230 Z" strokeWidth="3.5" strokeOpacity="0.95" />
+                <path d="M 250 130 L 350 230 L 250 330 L 150 230 Z" strokeWidth="2.8" strokeOpacity="0.8" />
+                <path d="M 250 170 L 310 230 L 250 290 L 190 230 Z" strokeWidth="2.2" strokeOpacity="0.65" />
+
+                {/* Structural Cross Weave Lines */}
+                <line x1="100" y1="230" x2="400" y2="230" strokeWidth="2" strokeDasharray="8 4" />
+                <line x1="250" y1="80" x2="250" y2="380" strokeWidth="2" strokeDasharray="8 4" />
+              </g>
+
+              {/* Animated Weaving Strand 1 (Horizontal Wave) */}
+              <motion.path
+                d="M -50 150 Q 150 50, 250 230 T 550 180"
+                fill="none"
+                stroke="url(#heroWireGrad)"
+                strokeWidth="4"
+                strokeDasharray="16 10"
+                animate={{ strokeDashoffset: [0, -104] }}
+                transition={{ repeat: Infinity, duration: 3.2, ease: "linear" }}
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-bg/95 via-transparent to-transparent" />
-              <span className="absolute top-3 right-3 border border-accent-2 bg-accent-dim px-3 py-1 text-[10px] font-black uppercase text-accent-2 font-mono">
-                {activeShowcase.tag}
-              </span>
-              <div className="absolute bottom-3 left-3 right-3">
-                <h3 className="text-sm font-black text-ink uppercase tracking-wide">
-                  <Bi ne={activeShowcase.titleNe} en={activeShowcase.titleEn} />
-                </h3>
-                <p className="text-[11px] text-steel font-medium mt-0.5 line-clamp-1">
-                  <Bi ne={activeShowcase.descNe} en={activeShowcase.descEn} />
-                </p>
-              </div>
-            </div>
 
-            {/* Interactive Showcase Selector Cards */}
-            <div className="grid grid-cols-4 gap-2">
-              {heroShowcases.map((sc) => (
-                <button
-                  key={sc.id}
-                  type="button"
-                  onClick={() => setActiveShowcase(sc)}
-                  className={`aspect-[4/3] border overflow-hidden transition-all ${
-                    activeShowcase.id === sc.id
-                      ? "border-accent-2 ring-1 ring-accent-2 opacity-100"
-                      : "border-line opacity-60 hover:opacity-100"
-                  }`}
-                >
-                  <img src={sc.image} alt={sc.titleEn} className="h-full w-full object-cover" />
-                </button>
-              ))}
-            </div>
+              {/* Animated Weaving Strand 2 (Diagonal Wave) */}
+              <motion.path
+                d="M -50 320 Q 200 450, 350 230 T 550 350"
+                fill="none"
+                stroke="url(#heroWireGrad)"
+                strokeWidth="3"
+                strokeDasharray="14 8"
+                animate={{ strokeDashoffset: [0, 88] }}
+                transition={{ repeat: Infinity, duration: 4, ease: "linear" }}
+              />
 
-            {/* Workshop Direct Guarantee Callout */}
-            <div className="border border-line bg-bg p-3 flex items-center justify-between text-xs font-bold">
-              <span className="text-steel flex items-center gap-1.5">
-                <Factory size={15} className="text-accent-2" />
-                <span>DIRECT FACTORY PRICING • NO MIDDLEMEN</span>
-              </span>
-              <a href="#products" className="text-accent-2 font-black hover:underline uppercase text-[10px]">
-                VIEW ALL →
-              </a>
-            </div>
+              {/* Radial Expand Pulse Wave */}
+              <motion.circle
+                cx="250"
+                cy="230"
+                fill="none"
+                stroke="var(--color-accent-2)"
+                strokeWidth="2"
+                animate={{ r: [30, 210], opacity: [0.95, 0] }}
+                transition={{ repeat: Infinity, duration: 3.4, ease: "easeOut" }}
+              />
+
+              {/* Electric Resistance Welding Spark Points */}
+              <circle cx="250" cy="80" r="5" fill="var(--color-accent-2)" className="animate-ping" />
+              <circle cx="400" cy="230" r="5" fill="var(--color-accent-2)" className="animate-ping" />
+              <circle cx="250" cy="380" r="5" fill="var(--color-accent-2)" className="animate-ping" />
+              <circle cx="100" cy="230" r="5" fill="var(--color-accent-2)" className="animate-ping" />
+
+              <circle cx="250" cy="80" r="6" fill="#f59e0b" />
+              <circle cx="400" cy="230" r="6" fill="#f59e0b" />
+              <circle cx="250" cy="380" r="6" fill="#f59e0b" />
+              <circle cx="100" cy="230" r="6" fill="#f59e0b" />
+              <circle cx="250" cy="230" r="8" fill="var(--color-accent-2)" />
+            </svg>
           </div>
         </div>
       </div>
     </section>
   );
 }
+
+

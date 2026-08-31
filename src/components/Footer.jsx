@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { ArrowUp, Zap, Volume2, VolumeX, Globe } from "lucide-react";
+import { ArrowUp, Zap, Volume2, VolumeX, Globe, Trophy } from "lucide-react";
 import Bi from "./Bi";
 import { navLinks } from "@/data/content";
 import { useLanguage } from "@/context/LanguageContext";
@@ -92,9 +92,13 @@ export default function Footer() {
                 SARASWOTI MESH JALI <span className="text-accent-2">MANUFACTURING WORKSHOP</span>
               </span>
             </div>
-            <div className="mt-4 inline-flex items-center gap-2 border border-line bg-surface px-3.5 py-1.5 text-xs font-bold text-steel">
-              <span className="h-2 w-2 bg-accent-2" />
-              <Bi ne="भरतपुर, महानगरपालिका, न्युरोड • प्रत्यक्ष कारखाना" en="Bharatpur Metropolitan, Nayaroad • Direct Workshop" />
+            <div className="mt-3 border border-amber-500/60 bg-amber-500/10 dark:bg-amber-500/20 p-2.5 text-xs font-bold text-amber-800 dark:text-amber-300 flex items-center gap-1.5">
+              <Trophy size={13} className="text-amber-600 dark:text-amber-400 shrink-0" />
+              <Bi ne="चितवन, नेपालको पहिलो मेश जाली उद्योग (२५-२८ वर्षको अनुभव)" en="1st Wire Mesh Factory in Chitwan, Nepal (25-28 Years Experience)" />
+            </div>
+            <div className="mt-3 flex flex-col gap-1 text-xs font-mono text-steel">
+              <div><span className="text-accent-2 font-bold">Landline:</span> <a href="tel:056595345" className="hover:underline text-ink">056-595345</a></div>
+              <div><span className="text-accent-2 font-bold">Mobile:</span> <a href="tel:9845043095" className="hover:underline text-ink">9845043095</a>, <a href="tel:9845340852" className="hover:underline text-ink">9845340852</a></div>
             </div>
           </div>
 

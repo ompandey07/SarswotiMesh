@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Check } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Check, Trophy } from "lucide-react";
 import Reveal from "./Reveal";
 import Bi from "./Bi";
 import { useLanguage } from "@/context/LanguageContext";
@@ -12,16 +12,46 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from ".
 import { productOptions } from "@/data/content";
 
 const infoItems = [
-  { icon: MapPin, titleNe: "ठेगाना", titleEn: "Location", value: "भरतपुर, महानगरपालिका, न्युरोड" },
-  { icon: Phone, titleNe: "फोन", titleEn: "Phone", value: "+977 (Bharatpur Workshop)" },
-  { icon: Mail, titleNe: "इमेल", titleEn: "Email", value: "info@saraswotimesh.com" },
-  { icon: Clock, titleNe: "खुल्ने समय", titleEn: "Opening Hours", value: "Sun - Fri: 8:00 AM - 6:00 PM" },
+  {
+    icon: MapPin,
+    titleNe: "ठेगाना",
+    titleEn: "Location",
+    valueNe: "भरतपुर, महानगरपालिका, न्युरोड, चितवन, नेपाल",
+    valueEn: "Bharatpur Metropolitan, Nayaroad, Chitwan, Nepal",
+  },
+  {
+    icon: Phone,
+    titleNe: "ल्यान्डलाइन फोन",
+    titleEn: "Landline Telephone",
+    value: "056-595345",
+    link: "tel:056595345",
+  },
+  {
+    icon: Phone,
+    titleNe: "मोबाइल अर्डर हटलाइन",
+    titleEn: "Mobile Order Hotlines",
+    value: "9845043095, 9845340852",
+    link: "tel:9845043095",
+  },
+  {
+    icon: Mail,
+    titleNe: "इमेल",
+    titleEn: "Email",
+    value: "info@saraswotimesh.com",
+    link: "mailto:info@saraswotimesh.com",
+  },
+  {
+    icon: Clock,
+    titleNe: "खुल्ने समय",
+    titleEn: "Opening Hours",
+    value: "Sun - Fri: 8:00 AM - 6:00 PM",
+  },
 ];
 
 export default function Contact() {
   const { lang } = useLanguage();
   const [sent, setSent] = useState(false);
-  const [product, setProduct] = useState("mesh-jali");
+  const [product, setProduct] = useState("anti-climb");
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -35,16 +65,28 @@ export default function Contact() {
       <div className="container-app grid lg:grid-cols-[0.9fr_1.1fr] gap-14">
         <Reveal>
           <div className="inline-block border-l-2 border-accent-2 pl-3 py-0.5 text-xs font-extrabold tracking-[0.2em] text-accent-2 uppercase">
-            <Bi ne="सम्पर्क" en="Contact" />
+            <Bi ne="सम्पर्क तथा अर्डर" en="Contact & Factory Order" />
           </div>
           <h2 className="mt-3 text-3xl sm:text-4xl font-black uppercase tracking-tight text-balance">
-            <span className="block lang-ne">बलियो समाधान सँगै निर्माण गरौं।</span>
-            <span className="block lang-en">LET'S BUILD SOMETHING STRONG.</span>
+            <span className="block lang-ne">चितवनको पहिलो जाली उद्योगसँग जोडिनुहोस्।</span>
+            <span className="block lang-en">CONNECT WITH CHITWAN'S FIRST MESH FACTORY.</span>
           </h2>
 
-          <div className="mt-10 flex flex-col gap-6">
-            {infoItems.map((it) => (
-              <div key={it.titleEn} className="flex items-start gap-4 border border-line bg-surface p-4 transition-colors hover:border-accent-2">
+          <div className="mt-4 border border-amber-500/60 bg-amber-500/10 dark:bg-amber-500/20 p-3.5 flex items-center gap-3">
+            <Trophy size={18} className="text-amber-600 dark:text-amber-400 shrink-0" />
+            <div>
+              <div className="text-xs font-black text-amber-800 dark:text-amber-300 uppercase tracking-wide">
+                <Bi ne="चितवन, नेपालको पहिलो मेश जाली उद्योग" en="1st Wire Mesh Factory in Chitwan, Nepal" />
+              </div>
+              <p className="text-[11px] text-steel font-medium mt-0.5">
+                <Bi ne="२५-२८ वर्षको निरन्तर विश्वास र उत्कृष्ट गुणस्तर।" en="Serving construction & infrastructure for 25-28+ years." />
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-8 flex flex-col gap-4">
+            {infoItems.map((it, idx) => (
+              <div key={idx} className="flex items-start gap-4 border border-line bg-surface p-4 transition-colors hover:border-accent-2">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center border border-accent-2 bg-accent-dim text-accent-2">
                   <it.icon size={17} />
                 </div>
@@ -52,7 +94,15 @@ export default function Contact() {
                   <b className="block text-xs font-extrabold uppercase tracking-wider text-ink font-display-lang">
                     <Bi ne={it.titleNe} en={it.titleEn} />
                   </b>
-                  <span className="text-xs font-medium text-steel mt-0.5 block">{it.value}</span>
+                  {it.link ? (
+                    <a href={it.link} className="text-xs font-mono font-bold text-accent-2 hover:underline mt-0.5 block">
+                      {it.value}
+                    </a>
+                  ) : (
+                    <span className="text-xs font-medium text-steel mt-0.5 block">
+                      {it.valueNe ? <Bi ne={it.valueNe} en={it.valueEn} /> : it.value}
+                    </span>
+                  )}
                 </div>
               </div>
             ))}

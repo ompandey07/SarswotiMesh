@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, Sun, Moon, Globe } from "lucide-react";
+import { Menu, X, Sun, Moon, Globe, Phone, Smartphone, Trophy } from "lucide-react";
 import { useLanguage } from "@/context/LanguageContext";
 import { useTheme } from "@/context/ThemeContext";
 import { navLinks } from "@/data/content";
@@ -34,11 +34,38 @@ export default function Navbar() {
       <header
         className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
           scrolled
-            ? "bg-bg/95 backdrop-blur-md border-b border-line shadow-md py-1.5"
-            : "bg-bg/70 backdrop-blur-sm border-b border-line/30 py-2.5"
+            ? "bg-bg/95 backdrop-blur-md border-b border-line shadow-md py-1"
+            : "bg-bg/85 backdrop-blur-sm border-b border-line/30 py-1"
         }`}
       >
-        <div className="container-app flex items-center justify-between">
+        {/* Top Header Hotlines Strip - High Contrast Theme Adaptive Layout */}
+        <div className="bg-surface border-b border-line py-1.5 text-[11px] font-mono font-bold text-steel shadow-2xs">
+          <div className="container-app flex flex-col sm:flex-row items-center justify-between gap-1.5 sm:gap-4">
+            {/* First in Chitwan Highlight */}
+            <div className="flex items-center gap-1.5 text-ink font-black text-center sm:text-left text-[11px] sm:text-xs">
+              <Trophy size={13} className="text-accent-2 shrink-0" />
+              <span>
+                <Bi ne="चितवन, नेपालको पहिलो जाली उद्योग" en="1st Wire Mesh Factory in Chitwan, Nepal" />{" "}
+                <strong className="text-accent-2 font-mono font-black">(२५-२८ वर्ष)</strong>
+              </span>
+            </div>
+
+            {/* Phone Hotlines */}
+            <div className="flex items-center flex-wrap justify-center sm:justify-end gap-2.5 sm:gap-4 text-steel text-[10px] sm:text-[11px]">
+              <a href="tel:056595345" className="inline-flex items-center gap-1 text-ink hover:text-accent-2 transition-colors">
+                <Phone size={11} className="text-accent-2 shrink-0" />
+                <span>Landline: <strong className="text-accent-2 font-black">056-595345</strong></span>
+              </a>
+              <span className="text-steel-dim">•</span>
+              <div className="inline-flex items-center gap-1 text-ink">
+                <Smartphone size={11} className="text-accent-2 shrink-0" />
+                <span>Mob: <a href="tel:9845043095" className="text-accent-2 font-black hover:underline">9845043095</a>, <a href="tel:9845340852" className="text-accent-2 font-black hover:underline">9845340852</a></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="container-app flex items-center justify-between pt-1.5">
           {/* Top Left Logo with CSS blend mode for stunning visual integration */}
           <a href="#home" className="flex items-center shrink-0 group">
             <img
