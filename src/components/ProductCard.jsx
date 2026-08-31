@@ -27,9 +27,9 @@ export default function ProductCard({ product }) {
       onMouseLeave={handleMouseLeave}
       style={{ rotateX, rotateY, transformPerspective: 900 }}
       whileHover={{ y: -5 }}
-      className="group border border-line bg-surface overflow-hidden transition-colors hover:border-accent-2"
+      className="group border border-line bg-surface overflow-hidden transition-colors hover:border-accent-2 h-full flex flex-col justify-between"
     >
-      <div className="relative aspect-[4/3] overflow-hidden border-b border-line bg-surface-2">
+      <div className="relative aspect-[4/3] w-full overflow-hidden border-b border-line bg-surface-2 flex-shrink-0">
         <img
           src={product.image.webp}
           alt={product.alt}
@@ -51,20 +51,10 @@ export default function ProductCard({ product }) {
         )}
       </div>
 
-      <div className="p-6">
-        <h3 className="text-lg font-black text-ink uppercase tracking-wide">
+      <div className="p-5 flex items-center justify-center text-center flex-1 min-h-[76px] bg-surface">
+        <h3 className="text-base font-black text-ink uppercase tracking-wide">
           <Bi ne={product.titleNe} en={product.titleEn} className="font-display-lang" />
         </h3>
-        <p className="mt-2 text-xs text-steel leading-relaxed font-medium">
-          <Bi ne={product.descNe} en={product.descEn} />
-        </p>
-        <a
-          href="#contact"
-          className="mt-5 inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-accent-2 group/link"
-        >
-          <Bi ne="विवरण तथा अर्डर" en="VIEW & ORDER" />
-          <ArrowRight size={14} className="transition-transform group-hover/link:translate-x-1" />
-        </a>
       </div>
     </motion.div>
   );
