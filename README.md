@@ -75,3 +75,8 @@ Run `npm run build` and upload the contents of `dist/` to any static host (Netli
 - Fonts are self-hosted and subset-loaded on demand (only the character sets actually used are downloaded by the browser).
 - Meta tags, Open Graph/Twitter cards, and JSON-LD `Manufacturer` structured data are set in `index.html`.
 - Animations respect `prefers-reduced-motion`.
+
+## Developer
+
+Designed & Developed by **[Om Pandey](https://www.omkumarpandey.com.np/)**.
+

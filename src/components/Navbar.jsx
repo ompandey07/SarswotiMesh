@@ -201,6 +201,18 @@ export default function Navbar() {
                   English
                 </button>
               </div>
+
+              <div className="mt-auto pb-6 pt-4 border-t border-line text-center text-xs font-bold text-steel">
+                <span><Bi ne="विकासकर्ता:" en="Developed By" /> </span>
+                <a
+                  href="https://www.omkumarpandey.com.np/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent-2 font-black hover:underline"
+                >
+                  Om Pandey
+                </a>
+              </div>
             </motion.nav>
           </>
         )}

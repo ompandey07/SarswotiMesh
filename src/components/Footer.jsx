@@ -99,6 +99,17 @@ export default function Footer() {
             <div className="mt-3 flex flex-col gap-1 text-xs font-mono text-steel">
               <div><span className="text-accent-2 font-bold">Landline:</span> <a href="tel:056595345" className="hover:underline text-ink">056-595345</a></div>
               <div><span className="text-accent-2 font-bold">Mobile:</span> <a href="tel:9845043095" className="hover:underline text-ink">9845043095</a>, <a href="tel:9845340852" className="hover:underline text-ink">9845340852</a></div>
+              <div className="pt-1 font-sans text-xs">
+                <span className="text-steel font-medium"><Bi ne="विकासकर्ता:" en="Developed By" /></span>{" "}
+                <a
+                  href="https://www.omkumarpandey.com.np/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-accent-2 font-black hover:underline"
+                >
+                  Om Pandey
+                </a>
+              </div>
             </div>
           </div>
 
@@ -167,10 +178,24 @@ export default function Footer() {
 
         {/* Bottom Copyright & Scroll Top Button */}
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4 pt-8 text-xs font-bold text-steel-dim">
-          <span className="flex items-center gap-2 text-center sm:text-left">
-            © {year} Saraswoti Mesh Jali Manufacturing Workshop.{" "}
-            <Bi ne="सर्वाधिकार सुरक्षित।" en="All Rights Reserved." />
-          </span>
+          <div className="flex flex-col sm:flex-row items-center gap-1.5 sm:gap-3 text-center sm:text-left">
+            <span>
+              © {year} Saraswoti Mesh Jali Manufacturing Workshop.{" "}
+              <Bi ne="सर्वाधिकार सुरक्षित।" en="All Rights Reserved." />
+            </span>
+            <span className="hidden sm:inline text-steel-dim/50">•</span>
+            <span className="text-steel font-bold">
+              <Bi ne="विकासकर्ता:" en="Developed By" />{" "}
+              <a
+                href="https://www.omkumarpandey.com.np/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-accent-2 font-black hover:underline transition-colors"
+              >
+                Om Pandey
+              </a>
+            </span>
+          </div>
 
           <button
             type="button"

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MapPin, Phone, Mail, Clock, Check, Trophy } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, Check, Trophy, Code2 } from "lucide-react";
 import Reveal from "./Reveal";
 import Bi from "./Bi";
 import { useLanguage } from "@/context/LanguageContext";
@@ -45,6 +45,14 @@ const infoItems = [
     titleNe: "खुल्ने समय",
     titleEn: "Opening Hours",
     value: "Sun - Fri: 8:00 AM - 6:00 PM",
+  },
+  {
+    icon: Code2,
+    titleNe: "वेबसाइट विकासकर्ता",
+    titleEn: "Website Developer",
+    value: "Developed By Om Pandey",
+    link: "https://www.omkumarpandey.com.np/",
+    external: true,
   },
 ];
 
@@ -95,7 +103,12 @@ export default function Contact() {
                     <Bi ne={it.titleNe} en={it.titleEn} />
                   </b>
                   {it.link ? (
-                    <a href={it.link} className="text-xs font-mono font-bold text-accent-2 hover:underline mt-0.5 block">
+                    <a
+                      href={it.link}
+                      target={it.external ? "_blank" : undefined}
+                      rel={it.external ? "noopener noreferrer" : undefined}
+                      className="text-xs font-mono font-bold text-accent-2 hover:underline mt-0.5 block"
+                    >
                       {it.value}
                     </a>
                   ) : (
